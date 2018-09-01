@@ -1,5 +1,5 @@
 {
-  "name": "MiniProgramBaseModule",
+  "name": "mini_app_base_module",
   "version": "1.0.0",
   "description": "小程序与业务无关的基础组件",
   "main": "baseIndex.js",
