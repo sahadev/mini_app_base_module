@@ -1,0 +1,15 @@
+{
+  "name": "MiniProgramBaseModule",
+  "version": "1.0.0",
+  "description": "小程序与业务无关的基础组件",
+  "main": "baseIndex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.missfresh.cn/frontend/mini_app_base_module.git"
+  },
+  "author": "shangbin",
+  "license": "ISC"
+}
