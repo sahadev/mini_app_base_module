@@ -13,7 +13,6 @@ function MFApp(applicationParams) {
 }
 
 function MFPage(pageParams) {
-    Page(pageParams);
     pageParams.setMFData = function (pageData) {
         if (util.hasUndefinedValue(pageData)) {
             // TODO 接入监控
@@ -22,6 +21,7 @@ function MFPage(pageParams) {
         }
         this.setData(pageData);
     }
+    Page(pageParams);
 }
 
 function getMFApp() {
