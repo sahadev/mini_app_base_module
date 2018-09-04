@@ -29,7 +29,7 @@ function reportRequestFailed(error) {
     //走网络监控
     util.loge('调用失败，请关注: ' + error);
     if (eventObserver) {
-        eventObserver.reportRequestFailed(res)
+        eventObserver.reportRequestFailed(error)
     }
 }
 
