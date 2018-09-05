@@ -21,6 +21,8 @@ function reportRequestSuccess(res) {
     //走网络监控
     if (eventObserver) {
         eventObserver.reportRequestSuccess(res)
+    }else{
+        throw new Error('未初始化监控管理器！请在app.js的onLuanch中初始化监控管理器');
     }
 
 
@@ -30,6 +32,8 @@ function reportRequestFailed(error) {
     util.loge('调用失败，请关注: ' + error);
     if (eventObserver) {
         eventObserver.reportRequestFailed(error)
+    }else{
+        throw new Error('未初始化监控管理器！请在app.js的onLuanch中初始化监控管理器');
     }
 }
 
