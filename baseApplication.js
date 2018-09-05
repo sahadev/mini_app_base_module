@@ -31,9 +31,23 @@ function getMFApp() {
 //获取Application的实例
 function getApplication() {
     if (!applicationInstance) {
+        
         applicationInstance = new Application();
         applicationInstance.app = getMFApp();
-        applicationInstance.globalData = applicationInstance.app.globalData;
+
+        /**
+         * 用户获取原生App实例的全局变量
+         */
+        applicationInstance.getNativeAppGlobalData = function () {
+            return applicationInstance.app.globalData;
+        }
+
+        /**
+         * 用户获取全局变量，例如fromSource等
+         */
+        applicationInstance.getGlobalData = function () {
+            return getApplication().globalData;
+        }
     }
 
     return applicationInstance;
