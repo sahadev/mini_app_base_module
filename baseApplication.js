@@ -2,6 +2,7 @@
 const util = require('./baseUtils');
 
 let applicationInstance = null;
+let eventObserver = null;
 
 function Application() {
     this.globalData = {
@@ -10,6 +11,11 @@ function Application() {
 
 function MFApp(applicationParams) {
     App(applicationParams);
+}
+
+
+function registObserver(observer) {
+    eventObserver = observer;
 }
 
 function MFPage(pageParams) {
@@ -21,6 +27,86 @@ function MFPage(pageParams) {
         }
         this.setData(pageData);
     }
+
+    /**
+     * 显示消息提示框
+     */
+    pageParams.showToast = function (title, icon, duration = 2000, mask = false) {
+        if(eventObserver && eventObserver.showToast){
+            eventObserver.showToast(title, icon, duration = 2000, mask = false);
+        }else{
+            throw new Error("该方法未注册！")
+        }
+    }
+
+    /**
+     * 隐藏消息提示框
+     */
+    pageParams.hideToast = function () {
+        if(eventObserver && eventObserver.hideToast){
+            eventObserver.hideToast();
+        }else{
+            throw new Error("该方法未注册！")
+        }
+    }
+
+    /**
+     * ​显示 loading 提示框, 需主动调用 wx.hideLoading 才能关闭提示框
+     */
+    pageParams.showLoading = function (title) {
+        if(eventObserver && eventObserver.showLoading){
+            eventObserver.showLoading(title);
+        }else{
+            throw new Error("该方法未注册！")
+        }
+    }
+
+    /**
+     * ​隐藏 loading 提示框
+     */
+    pageParams.hideLoading = function () {
+        if(eventObserver && eventObserver.hideLoading){
+            eventObserver.hideLoading();
+        }else{
+            throw new Error("该方法未注册！")
+        }
+    }
+
+    /**
+     * ​显示操作菜单
+     * @param {Object} itemList 
+     */
+    pageParams.showActionSheet = function (itemList) {
+        if(eventObserver && eventObserver.showActionSheet){
+            eventObserver.showActionSheet(itemList);
+        }else{
+            throw new Error("该方法未注册！")
+        }
+    }
+
+
+    /**
+     * 将页面滚动到目标位置。
+     */
+    pageParams.pageScrollTo = function (scrollTop, duration) {
+        if(eventObserver && eventObserver.pageScrollTo){
+            eventObserver.pageScrollTo(scrollTop, duration);
+        }else{
+            throw new Error("该方法未注册！")
+        }
+    }
+
+    /**
+     * 动态设置当前页面的标题。
+     */
+    pageParams.setTitle = function (title) {
+        if(eventObserver && eventObserver.setTitle){
+            eventObserver.setTitle(title);
+        }else{
+            throw new Error("该方法未注册！")
+        }
+    }
+
     Page(pageParams);
 }
 
@@ -54,5 +140,5 @@ function getApplication() {
 }
 
 module.exports = {
-    MFApp, MFPage, getApplication
+    MFApp, MFPage, getApplication, registObserver
 }
