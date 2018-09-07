@@ -31,18 +31,67 @@ function showActionSheet(itemList) {
     return wxGenPromise('showActionSheet', reqData)
 }
 
-function showModal(title, content, showCancel = false, confirmText = "确定", confirmColor = "#3CC51F", cancelText = "取消", cancelColor = "#000000") {
-    let reqData = {
-        title: title,
-        content: content,
-        showCancel: showCancel,
-        cancelText: cancelText,
-        cancelColor: cancelColor,
-        confirmText: confirmText,
-        confirmColor: confirmColor
-    }
-    return wxGenPromise('showModal', reqData)
+function showModal(title, content, success, confirmText, confirmColor, showCancel, cancelText, cancelColor) {
+    const modalBuilder = new ModalBuilder();
+    modalBuilder.setTitle(title);
+    modalBuilder.setContent(content);
+    modalBuilder.setCancelColor(cancelColor);
+    modalBuilder.setCancelText(cancelText);
+    modalBuilder.setConfirmColor(confirmColor);
+    modalBuilder.setConfirmText(confirmText);
+    modalBuilder.setShowCancel(showCancel);
+    modalBuilder.setSuccess(success);
+    return wxGenPromise('showModal', modalBuilder.create())
 }
+
+function ModalBuilder() {
+    const obj = {};
+
+    this.setTitle = function (title) {
+        if (title)
+            obj.title = title;
+    }
+
+    this.setContent = function (content) {
+        if (content)
+            obj.content = content;
+    }
+
+    this.setShowCancel = function (showCancel) {
+        if (showCancel)
+            obj.showCancel = showCancel;
+    }
+
+    this.setCancelText = function (cancelText) {
+        if (cancelText)
+            obj.cancelText = cancelText;
+    }
+
+    this.setCancelColor = function (cancelColor) {
+        if (cancelColor)
+            obj.cancelColor = cancelColor;
+    }
+
+    this.setConfirmText = function (confirmText) {
+        if (confirmText)
+            obj.confirmText = confirmText;
+    }
+
+    this.setConfirmColor = function (confirmColor) {
+        if (confirmColor)
+            obj.confirmColor = confirmColor;
+    }
+
+    this.setSuccess = function (success) {
+        if (success)
+            obj.success = success;
+    }
+
+    this.create = function () {
+        return obj;
+    }
+}
+
 
 function chooseImage(count, sizeType = ['original', 'compressed'], sourceType = ['album', 'camera']) {
     let reqData = {
@@ -260,5 +309,5 @@ module.exports = {
     checkSession,
     showLoading,
     hideLoading,
-    updateCartNum,
+    updateCartNum, ModalBuilder
 }
