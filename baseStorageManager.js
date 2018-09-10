@@ -61,7 +61,7 @@ function getStorage(key, success, fail, complete) {
 
 //检查关键字有效性
 function checkKeyenable(key) {
-    if (key && (CONSTANT[key] || CONSTANT_2[key])) {
+    if (key) {
         return true;
     } else {
         throw new Error('key必须通过setNetRelativeConstant方法或setConstant方法提前定义, 当前使用的Key为：' + key);
