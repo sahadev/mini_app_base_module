@@ -18,6 +18,7 @@ function registObserver(observer) {
     eventObserver = observer;
 }
 
+
 function MFPage(pageParams) {
     pageParams.setMFData = function (pageData) {
         if (util.hasUndefinedValue(pageData)) {
@@ -133,6 +134,10 @@ function getApplication() {
          */
         applicationInstance.getGlobalData = function () {
             return getApplication().globalData;
+        }
+
+        applicationInstance.getMFPages = function(){
+            return getCurrentPages();
         }
     }
 
