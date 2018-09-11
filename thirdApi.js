@@ -283,6 +283,10 @@ function updateCartNum(count) {
     }
 }
 
+function getSystemInfoSync() {
+    return wx.getSystemInfoSync();
+}
+
 module.exports = {
     wxApi: wxApi,
     showToast: showToast,
@@ -309,5 +313,5 @@ module.exports = {
     checkSession,
     showLoading,
     hideLoading,
-    updateCartNum, ModalBuilder
+    updateCartNum, ModalBuilder, getSystemInfoSync
 }

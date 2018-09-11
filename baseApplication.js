@@ -33,9 +33,9 @@ function MFPage(pageParams) {
      * 显示消息提示框
      */
     pageParams.showToast = function (title, icon, duration = 2000, mask = false) {
-        if(eventObserver && eventObserver.showToast){
+        if (eventObserver && eventObserver.showToast) {
             eventObserver.showToast(title, icon, duration = 2000, mask = false);
-        }else{
+        } else {
             throw new Error("该方法未注册！")
         }
     }
@@ -44,9 +44,9 @@ function MFPage(pageParams) {
      * 隐藏消息提示框
      */
     pageParams.hideToast = function () {
-        if(eventObserver && eventObserver.hideToast){
+        if (eventObserver && eventObserver.hideToast) {
             eventObserver.hideToast();
-        }else{
+        } else {
             throw new Error("该方法未注册！")
         }
     }
@@ -55,9 +55,9 @@ function MFPage(pageParams) {
      * ​显示 loading 提示框, 需主动调用 wx.hideLoading 才能关闭提示框
      */
     pageParams.showLoading = function (title) {
-        if(eventObserver && eventObserver.showLoading){
+        if (eventObserver && eventObserver.showLoading) {
             eventObserver.showLoading(title);
-        }else{
+        } else {
             throw new Error("该方法未注册！")
         }
     }
@@ -66,9 +66,9 @@ function MFPage(pageParams) {
      * ​隐藏 loading 提示框
      */
     pageParams.hideLoading = function () {
-        if(eventObserver && eventObserver.hideLoading){
+        if (eventObserver && eventObserver.hideLoading) {
             eventObserver.hideLoading();
-        }else{
+        } else {
             throw new Error("该方法未注册！")
         }
     }
@@ -78,9 +78,9 @@ function MFPage(pageParams) {
      * @param {Object} itemList 
      */
     pageParams.showActionSheet = function (itemList) {
-        if(eventObserver && eventObserver.showActionSheet){
+        if (eventObserver && eventObserver.showActionSheet) {
             eventObserver.showActionSheet(itemList);
-        }else{
+        } else {
             throw new Error("该方法未注册！")
         }
     }
@@ -90,9 +90,9 @@ function MFPage(pageParams) {
      * 将页面滚动到目标位置。
      */
     pageParams.pageScrollTo = function (scrollTop, duration) {
-        if(eventObserver && eventObserver.pageScrollTo){
+        if (eventObserver && eventObserver.pageScrollTo) {
             eventObserver.pageScrollTo(scrollTop, duration);
-        }else{
+        } else {
             throw new Error("该方法未注册！")
         }
     }
@@ -101,9 +101,9 @@ function MFPage(pageParams) {
      * 动态设置当前页面的标题。
      */
     pageParams.setTitle = function (title) {
-        if(eventObserver && eventObserver.setTitle){
+        if (eventObserver && eventObserver.setTitle) {
             eventObserver.setTitle(title);
-        }else{
+        } else {
             throw new Error("该方法未注册！")
         }
     }
@@ -118,14 +118,14 @@ function getMFApp() {
 //获取Application的实例
 function getApplication() {
     if (!applicationInstance) {
-        
+
         applicationInstance = new Application();
-        applicationInstance.app = getMFApp();
 
         /**
          * 用户获取原生App实例的全局变量
          */
         applicationInstance.getNativeAppGlobalData = function () {
+            applicationInstance.app = getMFApp();
             return applicationInstance.app.globalData;
         }
 
@@ -136,7 +136,7 @@ function getApplication() {
             return getApplication().globalData;
         }
 
-        applicationInstance.getMFPages = function(){
+        applicationInstance.getMFPages = function () {
             return getCurrentPages();
         }
     }
