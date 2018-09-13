@@ -139,6 +139,11 @@ function getApplication() {
         applicationInstance.getMFPages = function () {
             return getCurrentPages();
         }
+
+        applicationInstance.getCurrentPage = function () {
+            let pages = getCurrentPages();
+            return pages[pages.length-1];
+        }
     }
 
     return applicationInstance;
