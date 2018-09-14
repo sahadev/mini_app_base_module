@@ -1,5 +1,4 @@
 //关键位置监控管理器，主要实现事件转发功能，它在底层的功能为监控api的调用情况
-const baseNetManager = require('./baseNetRequestManager');
 const util = require('./baseUtils');
 
 var eventObserver = null;
@@ -14,14 +13,15 @@ function registObserver(observer) {
 }
 
 function logoutObserver(observer) {
-    eventObserver = null;
+    if (eventObserver == observer)
+        eventObserver = null;
 }
 
 function reportRequestSuccess(res) {
     //走网络监控
     if (eventObserver) {
         eventObserver.reportRequestSuccess(res)
-    }else{
+    } else {
         throw new Error('未初始化监控管理器！请在app.js的onLuanch中初始化监控管理器');
     }
 
@@ -32,7 +32,7 @@ function reportRequestFailed(error) {
     util.loge('调用失败，请关注: ' + error);
     if (eventObserver) {
         eventObserver.reportRequestFailed(error)
-    }else{
+    } else {
         throw new Error('未初始化监控管理器！请在app.js的onLuanch中初始化监控管理器');
     }
 }

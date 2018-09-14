@@ -31,6 +31,10 @@ function showActionSheet(itemList) {
     return wxGenPromise('showActionSheet', reqData)
 }
 
+function reportMonitor(name, value) {
+    wx.reportMonitor(name, value);
+}
+
 function showModal(title, content, success, confirmText, confirmColor, showCancel, cancelText, cancelColor) {
     const modalBuilder = new ModalBuilder();
     modalBuilder.setTitle(title);
@@ -312,6 +316,6 @@ module.exports = {
     clearStorage,
     checkSession,
     showLoading,
-    hideLoading,
+    hideLoading, reportMonitor,
     updateCartNum, ModalBuilder, getSystemInfoSync
 }
