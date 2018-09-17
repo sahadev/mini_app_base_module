@@ -74,19 +74,6 @@ function MFPage(pageParams) {
     }
 
     /**
-     * ​显示操作菜单
-     * @param {Object} itemList 
-     */
-    pageParams.showActionSheet = function (itemList) {
-        if (eventObserver && eventObserver.showActionSheet) {
-            eventObserver.showActionSheet(itemList);
-        } else {
-            throw new Error("该方法未注册！")
-        }
-    }
-
-
-    /**
      * 将页面滚动到目标位置。
      */
     pageParams.pageScrollTo = function (scrollTop, duration) {
@@ -142,7 +129,7 @@ function getApplication() {
 
         applicationInstance.getCurrentPage = function () {
             let pages = getCurrentPages();
-            return pages[pages.length-1];
+            return pages[pages.length - 1];
         }
     }
 
