@@ -290,6 +290,10 @@ function getSystemInfoSync() {
     return wx.getSystemInfoSync();
 }
 
+function stopPullDownRefresh(){
+    return wx.stopPullDownRefresh();
+}
+
 module.exports = {
     wxApi: wxApi,
     showToast: showToast,
@@ -316,5 +320,5 @@ module.exports = {
     checkSession,
     showLoading,
     hideLoading, reportMonitor,
-    updateCartNum, ModalBuilder, getSystemInfoSync
+    updateCartNum, ModalBuilder, getSystemInfoSync, stopPullDownRefresh
 }
