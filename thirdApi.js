@@ -35,7 +35,7 @@ function reportMonitor(name, value) {
     wx.reportMonitor(name, value);
 }
 
-function showModal(title, content, success, confirmText, confirmColor, showCancel, cancelText, cancelColor) {
+function showModal(title, content, confirmText, confirmColor, showCancel, cancelText, cancelColor) {
     const modalBuilder = new ModalBuilder();
     modalBuilder.setTitle(title);
     modalBuilder.setContent(content);
@@ -44,7 +44,6 @@ function showModal(title, content, success, confirmText, confirmColor, showCance
     modalBuilder.setConfirmColor(confirmColor);
     modalBuilder.setConfirmText(confirmText);
     modalBuilder.setShowCancel(showCancel);
-    modalBuilder.setSuccess(success);
     return wxGenPromise('showModal', modalBuilder.create())
 }
 
