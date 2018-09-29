@@ -1,13 +1,13 @@
-#小程序与业务无关的基础组件
+# 每日优鲜小程序基础组件
 
-##1.基础组件介绍
+## 1.基础组件介绍
 小程序基础组件基于每日优鲜主商城小程序业务实践演变而来。
 
 基础组件的名称为：mini_app_base_module。
 
 基础组件的项目地址为：https://github.com/sahadev/mini_app_base_module。
 
-##2.基础组件的结构与作用
+## 2.基础组件的结构与作用
 我们理想的项目结构应该是这样的：
 
 ![](https://github.com/sahadev/mini_app_base_module/blob/master/raw/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D.png?raw=true)
@@ -32,10 +32,10 @@ mini_app_base_module基础组件提供的功能有：
 
 **thirdNetApi**：用于访问运行时网络api。
 
-##3.基础组件的接入方法
+## 3.基础组件的接入方法
 基础组件了解了，该怎么接入它呢？
 
-###初次引入
+### 初次引入
 在项目中通过命令git submodule add https://github.com/sahadev/mini_app_base_module.git 进行引入。
 
 引入后，将在项目中产生两个文件：
@@ -45,13 +45,13 @@ mini_app_base_module基础组件提供的功能有：
 ```
 初次引入的开发者需要将这两个文件/文件夹commit并push。
 
-###初始化
+### 初始化
 在完成引入之后，基础组件的代码并没有存在与项目中，还需要进行初始化操作：```git submodule update --init --rebase```。小程序开发团队的每位开发者都需要执行一次。
 
-###更新与维护
+### 更新与维护
 进行以上操作之后，项目中会多出一个文件夹mini_app_base_module以及一个文件.gitmodules。当mini_app_base_module有更新或者有更改时，都需要进入mini_app_base_module文件夹中单独进行fetch、rebase操作或commit push操作。
 
-###基础组件接入
+### 基础组件接入
 如果顺利完成了引入，则开始进行接入操作。基础组件功能的使用视业务而定。但接入BaseApplciation是必须要做的。
 
 1.在业务代码中创建好application.js文件，application.js将作为业务组件的全局管理器，需要在application.js添加如下代码：
