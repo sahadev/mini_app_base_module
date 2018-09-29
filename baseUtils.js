@@ -43,7 +43,7 @@ function createUUID() {
 
 function hasUndefinedValue(obj) {
     for (let t in obj) {
-        if (obj[t] == undefined) {
+        if (obj[t] === undefined) {
             return true;
         }
     }
