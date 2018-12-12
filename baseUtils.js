@@ -50,7 +50,15 @@ function hasUndefinedValue(obj) {
     return false
 }
 
+function clearUndefinedParam(obj) {
+    for (let t in obj) {
+        if (obj[t] === undefined) {
+            delete obj[t];
+        }
+    }
+}
+
 
 module.exports = {
-    formatTime, logDebugInfo, logi, loge, createUUID, hasUndefinedValue, DEBUG_MODE
+    formatTime, logDebugInfo, logi, loge, createUUID, hasUndefinedValue, DEBUG_MODE, clearUndefinedParam
 }

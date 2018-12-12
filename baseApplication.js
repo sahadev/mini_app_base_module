@@ -24,7 +24,7 @@ function MFPage(pageParams) {
         if (util.hasUndefinedValue(pageData)) {
             // TODO 接入监控
             util.loge('setMFData方法的参数有undefined的值，请检查确认，并做校验');
-            return;
+            util.clearUndefinedParam(pageData);
         }
         this.setData(pageData);
     }
