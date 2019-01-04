@@ -1,5 +1,6 @@
 // 基础的Application 全局管理入口
 const util = require('./baseUtils');
+import { EventBus } from './EventBus'
 
 let applicationInstance = null;
 let eventObserver = null;
@@ -7,6 +8,9 @@ let eventObserver = null;
 function Application() {
     this.globalData = {
     };
+
+    //初始化事件总线管理器
+    this.eventBus = new EventBus();
 }
 
 function MFApp(applicationParams) {
@@ -17,7 +21,6 @@ function MFApp(applicationParams) {
 function registObserver(observer) {
     eventObserver = observer;
 }
-
 
 function MFPage(pageParams) {
     pageParams.setMFData = function (pageData) {
@@ -130,6 +133,11 @@ function getApplication() {
         applicationInstance.getCurrentPage = function () {
             let pages = getCurrentPages();
             return pages[pages.length - 1];
+        }
+
+        //获取事件总线实例
+        applicationInstance.getEventBus = function () {
+            return this.eventBus;
         }
     }
 
