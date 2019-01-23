@@ -1,11 +1,9 @@
-# 每日优鲜小程序基础组件
+@[TOC](每日优鲜小程序基础组件介绍)
 
 ## 1.基础组件介绍
 小程序基础组件基于每日优鲜主商城小程序业务实践演变而来。
 
 基础组件的名称为：mini_app_base_module。
-
-基础组件的项目地址为：https://github.com/sahadev/mini_app_base_module。
 
 ## 2.基础组件的结构与作用
 我们理想的项目结构应该是这样的：
@@ -36,7 +34,7 @@ mini_app_base_module基础组件提供的功能有：
 基础组件了解了，该怎么接入它呢？
 
 ### 初次引入
-在项目中通过命令git submodule add https://github.com/sahadev/mini_app_base_module.git 进行引入。
+在项目中通过命令git submodule add https://url.git 进行引入。
 
 引入后，将在项目中产生两个文件：
 ```
